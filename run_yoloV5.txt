@@ -1,0 +1,1 @@
+python "C:\D Drive Contents\Driver assist - Internship\Driver_monitoring\Repos\yolov5\detect_non.py" --weights "C:\D Drive Contents\Driver assist - Internship\Driver_monitoring\Repos\yolov5\runs\train\exp3_new\weights\best.pt" --source "C:\Users\manis\Videos\Iisc New 5Min.mp4"
