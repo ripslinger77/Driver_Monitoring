@@ -1,51 +1,101 @@
-# YOLOv5 requirements
+# YOLOv5 Driver Monitoring System Requirements
 # Usage: pip install -r requirements.txt
 
-# Base ------------------------------------------------------------------------
-gitpython
-ipython  # interactive notebook
+# Base Dependencies ------------------------------------------------------------------------
+gitpython>=3.1.0
+ipython>=7.0.0                  # interactive notebook
 matplotlib>=3.2.2
-numpy>=1.18.5
+numpy>=1.18.5,<1.24.0          # compatibility with various packages
 opencv-python>=4.1.1
 Pillow>=7.1.2
-psutil  # system resources
+psutil                          # system resources
 PyYAML>=5.3.1
 requests>=2.23.0
 scipy>=1.4.1
-thop>=0.1.1  # FLOPs computation
-torch>=1.7.0  # see https://pytorch.org/get-started/locally (recommended)
+thop>=0.1.1                     # FLOPs computation
+torch>=1.7.0                    # see https://pytorch.org/get-started/locally
 torchvision>=0.8.1
 tqdm>=4.64.0
-# protobuf<=3.20.1  # https://github.com/ultralytics/yolov5/issues/8012
 
-# Logging ---------------------------------------------------------------------
+# Logging ---------------------------------------------------------------------------------
 tensorboard>=2.4.1
-# clearml>=1.2.0
-# comet
 
-# Plotting --------------------------------------------------------------------
+# Plotting --------------------------------------------------------------------------------
 pandas>=1.1.4
 seaborn>=0.11.0
 
-# Export ----------------------------------------------------------------------
-# coremltools>=6.0  # CoreML export
-# onnx>=1.12.0  # ONNX export
-# onnx-simplifier>=0.4.1  # ONNX simplifier
-# nvidia-pyindex  # TensorRT export
-# nvidia-tensorrt  # TensorRT export
-# scikit-learn<=1.1.2  # CoreML quantization
-# tensorflow>=2.4.1  # TF exports (-cpu, -aarch64, -macos)
-# tensorflowjs>=3.9.0  # TF.js export
-# openvino-dev  # OpenVINO export
+# Export (Optional) -----------------------------------------------------------------------
+# Uncomment based on your export requirements
+# coremltools>=6.0              # CoreML export (macOS only)
+# onnx>=1.12.0                  # ONNX export
+# onnx-simplifier>=0.4.1        # ONNX simplifier
+# onnxruntime>=1.12.0           # ONNX runtime (CPU)
+# onnxruntime-gpu>=1.12.0       # ONNX runtime (GPU)
+# openvino-dev>=2022.1          # OpenVINO export
+# tensorflow>=2.4.1             # TensorFlow export
+# tensorflowjs>=3.9.0           # TensorFlow.js export
 
-# Deploy ----------------------------------------------------------------------
-setuptools>=65.5.1 # Snyk vulnerability fix
-wheel>=0.38.0 # Snyk vulnerability fix
-# tritonclient[all]~=2.24.0
+# Sensor Integration ----------------------------------------------------------------------
+pyrealsense2>=2.50.0            # Intel RealSense camera support
+av>=9.0.0                       # video metadata extraction
+keyboard>=0.13.5                # keyboard input handling
 
-# Extras ----------------------------------------------------------------------
-# mss  # screenshots
-# albumentations>=1.0.3
-# pycocotools>=2.0.6  # COCO mAP
-# roboflow
-# ultralytics  # HUB https://hub.ultralytics.com
+# Mapping and Visualization ---------------------------------------------------------------
+folium>=0.12.0                  # interactive maps
+selenium>=4.0.0                 # web driver for map screenshots
+moviepy>=1.0.3                  # video editing and composition
+pyautogui>=0.9.53              # GUI automation
+
+# Video Processing ------------------------------------------------------------------------
+imageio>=2.9.0                  # image I/O
+imageio-ffmpeg>=0.4.5          # FFMPEG wrapper
+
+# Security Fixes --------------------------------------------------------------------------
+setuptools>=65.5.1              # Snyk vulnerability fix
+wheel>=0.38.0                   # Snyk vulnerability fix
+
+# Additional Utilities --------------------------------------------------------------------
+webdriver-manager>=3.8.0        # automatic webdriver management for Selenium
+
+# Optional: Additional Export Formats -----------------------------------------------------
+# nvidia-pyindex                # TensorRT export (NVIDIA GPUs only)
+# nvidia-tensorrt               # TensorRT export (NVIDIA GPUs only)
+# scikit-learn<=1.1.2          # CoreML quantization
+# paddlepaddle>=2.3.0          # PaddlePaddle export
+
+# Optional: Advanced Features -------------------------------------------------------------
+# albumentations>=1.0.3         # advanced image augmentation
+# pycocotools>=2.0.6           # COCO mAP evaluation
+# roboflow                      # dataset management
+# comet-ml                      # experiment tracking
+# clearml>=1.2.0               # experiment tracking
+
+# Development Tools (Optional) ------------------------------------------------------------
+# pytest>=6.0.0                 # testing framework
+# pytest-cov>=2.12.0           # test coverage
+# black>=21.0                   # code formatting
+# flake8>=3.9.0                # code linting
+# isort>=5.9.0                 # import sorting
+
+# Notes:
+# 1. Install PyTorch with CUDA support for GPU acceleration:
+#    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+# 
+# 2. For RealSense camera support on Linux, additional system packages may be required:
+#    sudo apt-get install librealsense2-dkms librealsense2-utils
+#
+# 3. For TensorRT export, install from NVIDIA repository:
+#    pip install nvidia-tensorrt --index-url https://pypi.ngc.nvidia.com
+#
+# 4. Chrome/Chromium browser required for Selenium map screenshot functionality
+#    Download ChromeDriver: https://chromedriver.chromium.org/
+#
+# 5. FFmpeg required for video processing (moviepy dependency):
+#    Ubuntu/Debian: sudo apt-get install ffmpeg
+#    macOS: brew install ffmpeg
+#    Windows: Download from https://ffmpeg.org/
+#
+# 6. ADB (Android Debug Bridge) required for sensor integration:
+#    Ubuntu/Debian: sudo apt-get install adb
+#    macOS: brew install android-platform-tools
+#    Windows: Download Android SDK Platform Tools
